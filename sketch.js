@@ -1,10 +1,10 @@
 // Economics
-let TAX_RATE = 0.5;
-let TRANSACTION_BALANCE = 2000;
-let GOVERNMENT_EXPENDITURE_RATE = 1.0;
-let AVERAGE_PROPENSITY_TO_CONSUME = 0.5;
-let INVESTMENT_RATE = 1.0;
-let AVERAGE_PROPENSITY_IMPORT = 0.0;
+// let TAX_RATE = 0.5;
+// let TRANSACTION_BALANCE = 2000;
+// let GOVERNMENT_EXPENDITURE_RATE = 1.0;
+// let AVERAGE_PROPENSITY_TO_CONSUME = 0.5;
+// let INVESTMENT_RATE = 1.0;
+// let AVERAGE_PROPENSITY_IMPORT = 0.0;
 //   let AUTONOMOUS_GOVERNMENT_EXPENDITURE = 0;
 //   let GDP_Y = TRANSACTION_BALANCE;
 //   let AUTONOMOUS_EXPORT = 0;
@@ -39,7 +39,7 @@ function setup() {
   ZoomPanSetup(canvas);
   // Call a function to generate new Path object
   newPath();
-
+  console.log(TAX_RATE);
   endAnchors.push(
     {
       pipe: "GDP_Y",
