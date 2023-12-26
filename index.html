@@ -38,8 +38,36 @@ let INVESTMENT_RATE = 1.0;
 let AVERAGE_PROPENSITY_IMPORT = 0.0;
      -->
     <aside
+      class="absolute top-0 left-0 w-[350px] h-screen bg-[#ffffff10] p-4 space-y-4 text-white shadow-3xl"
+    >
+      <h1 class="text-xl">About This Project</h1>
+      <p class="flex flex-col gap-2 bg-[#ffffff10] p-4 rounded shadow-md">
+        Our simulation is inspired by Bill Phillips' hydraulic economics computer also known as the MONIAC, or Monetary National Income Analogue Computer, was invented in 1949. 
+        
+        <br> 
+        <br> 
+        It represents key economic variables in Nigeria and allows users to experiment with economic policies. 
+        <br> 
+        <br>  
+        Users can adjust parameters like interest rates and taxation to visualize the effects of policy changes.
+        <br>  
+        <br>
+        Creator: Justina Okere 
+        <br>
+        Developer: Nwachukwu Ujubuonu
+      </p>
+    </aside>
+    <aside
       class="absolute top-0 right-0 w-[400px] h-screen bg-[#ffffff10] p-4 space-y-4 text-white shadow-3xl"
     >
+      <h1 class="text-xl">Stats</h1>
+      <div class="flex flex-col gap-4">
+        <section
+          class="flex flex-col gap-2 bg-[#ffffff10] p-2 rounded shadow-md"
+        >
+          <p>GDP (Income) : <span id="GDP_Y">2000</span></p>
+        </section>
+      </div>
       <h1 class="text-xl">Controls</h1>
       <div class="flex flex-col gap-4">
         <section

@@ -1,5 +1,6 @@
 // Economics
 let TRANSACTION_BALANCE= 2000
+let GDP_Y = TRANSACTION_BALANCE;
 let economic_rates = {
   TAX_RATE: 0.24,
   GOVERNMENT_EXPENDITURE_RATE: 0.45,
@@ -18,14 +19,14 @@ function initializeValues() {
   let economic_rates_list = Object.entries(economic_rates)
   for(let i = 0; i < economic_rates_list.length; i++){
     let x = document.getElementById(economic_rates_list[i][0]);
-     x.value= economic_rates_list[i][1]*100
+    x.value= economic_rates_list[i][1]*100
     document.getElementById(economic_rates_list[i][0]+"_VALUE").innerHTML = `${x.value}%`;
   }
 }
+// Economics
 
 initializeValues() 
 //   let AUTONOMOUS_GOVERNMENT_EXPENDITURE = 0;
-//   let GDP_Y = TRANSACTION_BALANCE;
 //   let AUTONOMOUS_EXPORT = 0;
 //   let GOVERNMENT_SURPLUS = 0;
 //   let IDLE_BALANCE = 0;
@@ -55,7 +56,7 @@ function setup() {
   createCanvas(400, 400);
   angleMode(DEGREES);
   let canvas = createCanvas(window.innerWidth, window.innerHeight);
-  ZoomPanSetup(canvas);
+  // ZoomPanSetup(canvas);
   // Call a function to generate new Path object
   newPath();
   endAnchors.push(
