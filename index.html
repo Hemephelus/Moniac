@@ -45,19 +45,18 @@ let AVERAGE_PROPENSITY_IMPORT = 0.0;
         <section
           class="flex flex-col gap-2 bg-[#ffffff10] p-2 rounded shadow-md"
         >
-          <p>TAX RATE : <span id="TAX_RATE_VALUE">0.5</span></p>
+          <p>TAX RATE : <span id="TAX_RATE_VALUE"></span></p>
           <div class="flex gap-2 items-center">
-            <p>0</p>
+            <p>0%</p>
             <input
               type="range"
               min="0"
               max="100"
-              value="{controls.economics.TAX_RATE}"
               class="slider"
               id="TAX_RATE"
               onchange="updateValue('TAX_RATE','TAX_RATE_VALUE')"
             />
-            <p>1</p>
+            <p>100%</p>
           </div>
         </section>
         <section
@@ -65,20 +64,79 @@ let AVERAGE_PROPENSITY_IMPORT = 0.0;
         >
           <p>
             AVERAGE PROPENSITY TO CONSUME :
-            <span id="AVERAGE_PROPENSITY_TO_CONSUME_VALUE">0.5</span>
+            <span id="AVERAGE_PROPENSITY_TO_CONSUME_VALUE"></span>
           </p>
           <div class="flex gap-2">
-            <p>0</p>
+            <p>0%</p>
             <input
               type="range"
               min="0"
               max="100"
-              value="{controls.economics.TAX_RATE}"
               class="slider"
               id="AVERAGE_PROPENSITY_TO_CONSUME"
               onchange="updateValue('AVERAGE_PROPENSITY_TO_CONSUME','AVERAGE_PROPENSITY_TO_CONSUME_VALUE')"
             />
-            <p>1</p>
+            <p>100%</p>
+          </div>
+        </section>
+        <section
+          class="flex flex-col gap-2 bg-[#ffffff10] p-2 rounded shadow-md"
+        >
+          <p>
+            GOVERNMENT EXPENDITURE RATE :
+            <span id="GOVERNMENT_EXPENDITURE_RATE_VALUE"></span>
+          </p>
+          <div class="flex gap-2">
+            <p>0%</p>
+            <input
+              type="range"
+              min="0"
+              max="100"
+              class="slider"
+              id="GOVERNMENT_EXPENDITURE_RATE"
+              onchange="updateValue('GOVERNMENT_EXPENDITURE_RATE','GOVERNMENT_EXPENDITURE_RATE_VALUE')"
+            />
+            <p>100%</p>
+          </div>
+        </section>
+        <section
+          class="flex flex-col gap-2 bg-[#ffffff10] p-2 rounded shadow-md"
+        >
+          <p>
+            INVESTMENT RATE :
+            <span id="INVESTMENT_RATE_VALUE"></span>
+          </p>
+          <div class="flex gap-2">
+            <p>0%</p>
+            <input
+              type="range"
+              min="0"
+              max="100"
+              class="slider"
+              id="INVESTMENT_RATE"
+              onchange="updateValue('INVESTMENT_RATE','INVESTMENT_RATE_VALUE')"
+            />
+            <p>100%</p>
+          </div>
+        </section>
+        <section
+          class="flex flex-col gap-2 bg-[#ffffff10] p-2 rounded shadow-md"
+        >
+          <p>
+            AVERAGE PROPENSITY IMPORT :
+            <span id="AVERAGE_PROPENSITY_IMPORT_VALUE"></span>
+          </p>
+          <div class="flex gap-2">
+            <p>0%</p>
+            <input
+              type="range"
+              min="0"
+              max="100"
+              class="slider"
+              id="AVERAGE_PROPENSITY_IMPORT"
+              onchange="updateValue('AVERAGE_PROPENSITY_IMPORT','AVERAGE_PROPENSITY_IMPORT_VALUE')"
+            />
+            <p>100%</p>
           </div>
         </section>
       </div>

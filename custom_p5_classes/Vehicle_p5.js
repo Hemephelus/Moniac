@@ -14,7 +14,7 @@ class Vehicle {
     // Constructor initialize all values
     constructor(x, y, ms, mf, pathId) {
       this.position = createVector(x, y);
-      this.r = 5;
+      this.r = 20;
       this.maxspeed = ms;
       this.maxforce = mf;
       this.acceleration = createVector(0, 0);

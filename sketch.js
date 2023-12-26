@@ -39,7 +39,6 @@ function setup() {
   ZoomPanSetup(canvas);
   // Call a function to generate new Path object
   newPath();
-  console.log(TAX_RATE);
   endAnchors.push(
     {
       pipe: "GDP_Y",
@@ -47,7 +46,7 @@ function setup() {
       rotation: 0,
       anchor: paths[0].points[4],
       nextIds: [1, 2],
-      probabilities: [TAX_RATE, 1 - TAX_RATE],
+      probabilities: [economic_rates['TAX_RATE'], 1 - economic_rates['TAX_RATE']],
     },
 
     {
@@ -66,11 +65,11 @@ function setup() {
       anchor: paths[2].points[1],
       nextIds: [6, 7],
       probabilities: [
-        AVERAGE_PROPENSITY_TO_CONSUME,
-        1 - AVERAGE_PROPENSITY_TO_CONSUME,
+        economic_rates['AVERAGE_PROPENSITY_TO_CONSUME'],
+        1 - economic_rates['AVERAGE_PROPENSITY_TO_CONSUME'],
       ],
     },
-    
+
     {
       pipe: "_Taxes_2",
       textPosition: [width / 2.0, height / 3.5],
@@ -78,11 +77,11 @@ function setup() {
       anchor: paths[3].points[1],
       nextIds: [4, 5],
       probabilities: [
-        GOVERNMENT_EXPENDITURE_RATE,
-        1 - GOVERNMENT_EXPENDITURE_RATE,
+        economic_rates['GOVERNMENT_EXPENDITURE_RATE'],
+        1 - economic_rates['GOVERNMENT_EXPENDITURE_RATE'],
       ],
     },
-    
+
     {
       pipe: "Govt_Expt",
       textPosition: [width / 2.45, height / 1.95],
@@ -91,7 +90,7 @@ function setup() {
       nextIds: [11],
       probabilities: [1],
     },
-    
+
     {
       pipe: "Govt_Surplus",
       textPosition: [width / 2.57, height / 1.6],
@@ -100,7 +99,7 @@ function setup() {
       nextIds: [null],
       probabilities: [1],
     },
-    
+
     {
       pipe: "Consumption",
       textPosition: [width / 2.17, height / 2.01],
@@ -109,7 +108,7 @@ function setup() {
       nextIds: [11],
       probabilities: [1],
     },
-    
+
     {
       pipe: "Savings",
       textPosition: [width / 2, height / 3.1],
@@ -118,7 +117,7 @@ function setup() {
       nextIds: [8],
       probabilities: [1],
     },
-    
+
     {
       pipe: "_Savings_1",
       textPosition: [width / 2.05, height / 3.5],
@@ -127,25 +126,28 @@ function setup() {
       nextIds: [8],
       probabilities: [1],
     },
-    
+
     {
       pipe: "_Savings_2",
       textPosition: [width / 2.05, height / 3.5],
       rotation: 0,
       anchor: paths[8].points[1],
       nextIds: [9, 10],
-      probabilities: [INVESTMENT_RATE, 1 - INVESTMENT_RATE],
+      probabilities: [
+        economic_rates['INVESTMENT_RATE'],
+        1 - economic_rates['INVESTMENT_RATE'],
+      ],
     },
-    
+
     {
       pipe: "Investment",
-      textPosition: [width / 2,  height / 2],
+      textPosition: [width / 2, height / 2],
       rotation: 333,
       anchor: paths[9].points[1],
       nextIds: [11],
       probabilities: [1],
     },
-    
+
     {
       pipe: "Idle_Reserves",
       textPosition: [width / 1.76, height / 2],
@@ -154,16 +156,19 @@ function setup() {
       nextIds: [null],
       probabilities: [1],
     },
-    
+
     {
       pipe: "_Total_Expenditure",
       textPosition: [width / 2.05, height / 3.5],
       rotation: 0,
       anchor: paths[11].points[1],
       nextIds: [13, 12],
-      probabilities: [AVERAGE_PROPENSITY_IMPORT, 1 - AVERAGE_PROPENSITY_IMPORT],
+      probabilities: [
+        economic_rates['AVERAGE_PROPENSITY_IMPORT'],
+        1 - economic_rates['AVERAGE_PROPENSITY_IMPORT'],
+      ],
     },
-    
+
     {
       pipe: "Domestic_Expenditure",
       textPosition: [width / 2.13, height / 1.1],
@@ -172,7 +177,7 @@ function setup() {
       nextIds: [0],
       probabilities: [1],
     },
-    
+
     {
       pipe: "Import",
       textPosition: [width / 2, height / 1.45],
@@ -190,10 +195,10 @@ function setup() {
       nextIds: [0],
       probabilities: [1],
     }
-    );
-    // We are now making random vehicles and storing them in an ArrayList
-    for (let i = 0; i < TRANSACTION_BALANCE; i++) {
-      newVehicle(width / 2 - offset, height - offset);
+  );
+  // We are now making random vehicles and storing them in an ArrayList
+  for (let i = 0; i < TRANSACTION_BALANCE; i++) {
+    newVehicle(width / 2 - offset, height - offset);
   }
   let numberOfBoxes = 2;
   createBoxes(numberOfBoxes, boxes);
@@ -202,6 +207,8 @@ function setup() {
 function draw() {
   background(28, 79, 74);
   ZoomPanDraw();
+  updateRates();
+
   mouseLocation = { x: mouseX, y: mouseY };
 
   for (let i = 0; i < paths.length; i++) {
@@ -234,7 +241,7 @@ function draw() {
 
   for (let j = 0; j < endAnchors.length; j++) {
     let endAnchor = endAnchors[j];
-    if(endAnchor.pipe[0] === '_')continue
+    if (endAnchor.pipe[0] === "_") continue;
     fill(200);
     textSize(14);
     push();
@@ -261,6 +268,21 @@ if (mouseStates.selection_tool) {
           pathPoints[j].isSelected = true;
         }
       }
+    }
+  }
+
+  function updateRates() {
+    let list = [
+      [economic_rates['TAX_RATE'], 0],
+      [economic_rates['AVERAGE_PROPENSITY_TO_CONSUME'], 2],
+      [economic_rates['GOVERNMENT_EXPENDITURE_RATE'], 3],
+      [economic_rates['INVESTMENT_RATE'], 9],
+      [economic_rates['AVERAGE_PROPENSITY_IMPORT'], 12],
+    ];
+    // console.log(AVERAGE_PROPENSITY_TO_CONSUME);
+    for (let [rate, index] of list) {
+      endAnchors[index].probabilities[0] = rate;
+      endAnchors[index].probabilities[1] = 1 - rate;
     }
   }
 
